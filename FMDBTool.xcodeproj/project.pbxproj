@@ -14,6 +14,9 @@
 		1BB9CDBF1B0739DE007C7C72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9CDBE1B0739DE007C7C72 /* Images.xcassets */; };
 		1BB9CDC21B0739DE007C7C72 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9CDC01B0739DE007C7C72 /* LaunchScreen.xib */; };
 		1BB9CDCE1B0739DE007C7C72 /* FMDBToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDCD1B0739DE007C7C72 /* FMDBToolTests.m */; };
+		1BB9CDDE1B073A23007C7C72 /* TYCommonDatabaseAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDD91B073A23007C7C72 /* TYCommonDatabaseAccess.m */; };
+		1BB9CDDF1B073A23007C7C72 /* TYDatabaseAccessTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDDB1B073A23007C7C72 /* TYDatabaseAccessTemplate.m */; };
+		1BB9CDE01B073A23007C7C72 /* TYDatebaseFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDDD1B073A23007C7C72 /* TYDatebaseFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,12 @@
 		1BB9CDC71B0739DE007C7C72 /* FMDBToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FMDBToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BB9CDCC1B0739DE007C7C72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BB9CDCD1B0739DE007C7C72 /* FMDBToolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDBToolTests.m; sourceTree = "<group>"; };
+		1BB9CDD81B073A23007C7C72 /* TYCommonDatabaseAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCommonDatabaseAccess.h; sourceTree = "<group>"; };
+		1BB9CDD91B073A23007C7C72 /* TYCommonDatabaseAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCommonDatabaseAccess.m; sourceTree = "<group>"; };
+		1BB9CDDA1B073A23007C7C72 /* TYDatabaseAccessTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatabaseAccessTemplate.h; sourceTree = "<group>"; };
+		1BB9CDDB1B073A23007C7C72 /* TYDatabaseAccessTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatabaseAccessTemplate.m; sourceTree = "<group>"; };
+		1BB9CDDC1B073A23007C7C72 /* TYDatebaseFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatebaseFactory.h; sourceTree = "<group>"; };
+		1BB9CDDD1B073A23007C7C72 /* TYDatebaseFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatebaseFactory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +90,7 @@
 		1BB9CDB01B0739DD007C7C72 /* FMDBTool */ = {
 			isa = PBXGroup;
 			children = (
+				1BB9CDD71B073A23007C7C72 /* Class */,
 				1BB9CDB51B0739DD007C7C72 /* AppDelegate.h */,
 				1BB9CDB61B0739DD007C7C72 /* AppDelegate.m */,
 				1BB9CDB81B0739DD007C7C72 /* ViewController.h */,
@@ -117,6 +127,19 @@
 				1BB9CDCC1B0739DE007C7C72 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BB9CDD71B073A23007C7C72 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				1BB9CDD81B073A23007C7C72 /* TYCommonDatabaseAccess.h */,
+				1BB9CDD91B073A23007C7C72 /* TYCommonDatabaseAccess.m */,
+				1BB9CDDA1B073A23007C7C72 /* TYDatabaseAccessTemplate.h */,
+				1BB9CDDB1B073A23007C7C72 /* TYDatabaseAccessTemplate.m */,
+				1BB9CDDC1B073A23007C7C72 /* TYDatebaseFactory.h */,
+				1BB9CDDD1B073A23007C7C72 /* TYDatebaseFactory.m */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +242,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BB9CDE01B073A23007C7C72 /* TYDatebaseFactory.m in Sources */,
+				1BB9CDDF1B073A23007C7C72 /* TYDatabaseAccessTemplate.m in Sources */,
+				1BB9CDDE1B073A23007C7C72 /* TYCommonDatabaseAccess.m in Sources */,
 				1BB9CDBA1B0739DD007C7C72 /* ViewController.m in Sources */,
 				1BB9CDB71B0739DD007C7C72 /* AppDelegate.m in Sources */,
 				1BB9CDB41B0739DD007C7C72 /* main.m in Sources */,
