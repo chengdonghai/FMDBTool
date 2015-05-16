@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		19DFFA2F3B11134D6BE63201 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 424DCC2310118187D5BE3CB6 /* libPods.a */; };
+		1B6A2DDE1B074822000EBD74 /* TYCommonDatabaseAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6A2DD71B074822000EBD74 /* TYCommonDatabaseAccess.m */; };
+		1B6A2DDF1B074822000EBD74 /* TYDatabaseAccessTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6A2DD91B074822000EBD74 /* TYDatabaseAccessTemplate.m */; };
+		1B6A2DE01B074822000EBD74 /* TYDatebaseFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6A2DDC1B074822000EBD74 /* TYDatebaseFactory.m */; };
 		1BB9CDB41B0739DD007C7C72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDB31B0739DD007C7C72 /* main.m */; };
 		1BB9CDB71B0739DD007C7C72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDB61B0739DD007C7C72 /* AppDelegate.m */; };
 		1BB9CDBA1B0739DD007C7C72 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDB91B0739DD007C7C72 /* ViewController.m */; };
@@ -15,9 +18,6 @@
 		1BB9CDBF1B0739DE007C7C72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9CDBE1B0739DE007C7C72 /* Images.xcassets */; };
 		1BB9CDC21B0739DE007C7C72 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9CDC01B0739DE007C7C72 /* LaunchScreen.xib */; };
 		1BB9CDCE1B0739DE007C7C72 /* FMDBToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDCD1B0739DE007C7C72 /* FMDBToolTests.m */; };
-		1BB9CDDE1B073A23007C7C72 /* TYCommonDatabaseAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDD91B073A23007C7C72 /* TYCommonDatabaseAccess.m */; };
-		1BB9CDDF1B073A23007C7C72 /* TYDatabaseAccessTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDDB1B073A23007C7C72 /* TYDatabaseAccessTemplate.m */; };
-		1BB9CDE01B073A23007C7C72 /* TYDatebaseFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDDD1B073A23007C7C72 /* TYDatebaseFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,8 +31,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1B6A2DD31B073FEE000EBD74 /* TYDatebaseDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYDatebaseDefines.h; sourceTree = "<group>"; };
-		1B6A2DD41B0741DE000EBD74 /* TYFMDBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYFMDBTool.h; sourceTree = "<group>"; };
+		1B6A2DD61B074822000EBD74 /* TYCommonDatabaseAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCommonDatabaseAccess.h; sourceTree = "<group>"; };
+		1B6A2DD71B074822000EBD74 /* TYCommonDatabaseAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCommonDatabaseAccess.m; sourceTree = "<group>"; };
+		1B6A2DD81B074822000EBD74 /* TYDatabaseAccessTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatabaseAccessTemplate.h; sourceTree = "<group>"; };
+		1B6A2DD91B074822000EBD74 /* TYDatabaseAccessTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatabaseAccessTemplate.m; sourceTree = "<group>"; };
+		1B6A2DDA1B074822000EBD74 /* TYDatebaseDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatebaseDefines.h; sourceTree = "<group>"; };
+		1B6A2DDB1B074822000EBD74 /* TYDatebaseFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatebaseFactory.h; sourceTree = "<group>"; };
+		1B6A2DDC1B074822000EBD74 /* TYDatebaseFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatebaseFactory.m; sourceTree = "<group>"; };
+		1B6A2DDD1B074822000EBD74 /* TYFMDBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYFMDBTool.h; sourceTree = "<group>"; };
 		1BB9CDAE1B0739DD007C7C72 /* FMDBTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMDBTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BB9CDB21B0739DD007C7C72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BB9CDB31B0739DD007C7C72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,12 +52,6 @@
 		1BB9CDC71B0739DE007C7C72 /* FMDBToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FMDBToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BB9CDCC1B0739DE007C7C72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BB9CDCD1B0739DE007C7C72 /* FMDBToolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDBToolTests.m; sourceTree = "<group>"; };
-		1BB9CDD81B073A23007C7C72 /* TYCommonDatabaseAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCommonDatabaseAccess.h; sourceTree = "<group>"; };
-		1BB9CDD91B073A23007C7C72 /* TYCommonDatabaseAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCommonDatabaseAccess.m; sourceTree = "<group>"; };
-		1BB9CDDA1B073A23007C7C72 /* TYDatabaseAccessTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatabaseAccessTemplate.h; sourceTree = "<group>"; };
-		1BB9CDDB1B073A23007C7C72 /* TYDatabaseAccessTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatabaseAccessTemplate.m; sourceTree = "<group>"; };
-		1BB9CDDC1B073A23007C7C72 /* TYDatebaseFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatebaseFactory.h; sourceTree = "<group>"; };
-		1BB9CDDD1B073A23007C7C72 /* TYDatebaseFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatebaseFactory.m; sourceTree = "<group>"; };
 		424DCC2310118187D5BE3CB6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		83BB81315DAB602E29B03CE1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FE55D204AD2C31297B00B51E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +76,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B6A2DD51B074822000EBD74 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1B6A2DD61B074822000EBD74 /* TYCommonDatabaseAccess.h */,
+				1B6A2DD71B074822000EBD74 /* TYCommonDatabaseAccess.m */,
+				1B6A2DD81B074822000EBD74 /* TYDatabaseAccessTemplate.h */,
+				1B6A2DD91B074822000EBD74 /* TYDatabaseAccessTemplate.m */,
+				1B6A2DDA1B074822000EBD74 /* TYDatebaseDefines.h */,
+				1B6A2DDB1B074822000EBD74 /* TYDatebaseFactory.h */,
+				1B6A2DDC1B074822000EBD74 /* TYDatebaseFactory.m */,
+				1B6A2DDD1B074822000EBD74 /* TYFMDBTool.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		1BB9CDA51B0739DD007C7C72 = {
 			isa = PBXGroup;
 			children = (
@@ -99,7 +114,7 @@
 		1BB9CDB01B0739DD007C7C72 /* FMDBTool */ = {
 			isa = PBXGroup;
 			children = (
-				1BB9CDD71B073A23007C7C72 /* Class */,
+				1B6A2DD51B074822000EBD74 /* Classes */,
 				1BB9CDB51B0739DD007C7C72 /* AppDelegate.h */,
 				1BB9CDB61B0739DD007C7C72 /* AppDelegate.m */,
 				1BB9CDB81B0739DD007C7C72 /* ViewController.h */,
@@ -136,21 +151,6 @@
 				1BB9CDCC1B0739DE007C7C72 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1BB9CDD71B073A23007C7C72 /* Class */ = {
-			isa = PBXGroup;
-			children = (
-				1BB9CDD81B073A23007C7C72 /* TYCommonDatabaseAccess.h */,
-				1BB9CDD91B073A23007C7C72 /* TYCommonDatabaseAccess.m */,
-				1BB9CDDA1B073A23007C7C72 /* TYDatabaseAccessTemplate.h */,
-				1BB9CDDB1B073A23007C7C72 /* TYDatabaseAccessTemplate.m */,
-				1BB9CDDC1B073A23007C7C72 /* TYDatebaseFactory.h */,
-				1BB9CDDD1B073A23007C7C72 /* TYDatebaseFactory.m */,
-				1B6A2DD31B073FEE000EBD74 /* TYDatebaseDefines.h */,
-				1B6A2DD41B0741DE000EBD74 /* TYFMDBTool.h */,
-			);
-			path = Class;
 			sourceTree = "<group>";
 		};
 		3BEC4F5C5A22AFB250392563 /* Frameworks */ = {
@@ -305,9 +305,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BB9CDE01B073A23007C7C72 /* TYDatebaseFactory.m in Sources */,
-				1BB9CDDF1B073A23007C7C72 /* TYDatabaseAccessTemplate.m in Sources */,
-				1BB9CDDE1B073A23007C7C72 /* TYCommonDatabaseAccess.m in Sources */,
+				1B6A2DE01B074822000EBD74 /* TYDatebaseFactory.m in Sources */,
+				1B6A2DDF1B074822000EBD74 /* TYDatabaseAccessTemplate.m in Sources */,
+				1B6A2DDE1B074822000EBD74 /* TYCommonDatabaseAccess.m in Sources */,
 				1BB9CDBA1B0739DD007C7C72 /* ViewController.m in Sources */,
 				1BB9CDB71B0739DD007C7C72 /* AppDelegate.m in Sources */,
 				1BB9CDB41B0739DD007C7C72 /* main.m in Sources */,
