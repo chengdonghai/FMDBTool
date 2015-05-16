@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19DFFA2F3B11134D6BE63201 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 424DCC2310118187D5BE3CB6 /* libPods.a */; };
 		1BB9CDB41B0739DD007C7C72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDB31B0739DD007C7C72 /* main.m */; };
 		1BB9CDB71B0739DD007C7C72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDB61B0739DD007C7C72 /* AppDelegate.m */; };
 		1BB9CDBA1B0739DD007C7C72 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDB91B0739DD007C7C72 /* ViewController.m */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B6A2DD31B073FEE000EBD74 /* TYDatebaseDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYDatebaseDefines.h; sourceTree = "<group>"; };
+		1B6A2DD41B0741DE000EBD74 /* TYFMDBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYFMDBTool.h; sourceTree = "<group>"; };
 		1BB9CDAE1B0739DD007C7C72 /* FMDBTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMDBTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BB9CDB21B0739DD007C7C72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BB9CDB31B0739DD007C7C72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -49,6 +52,9 @@
 		1BB9CDDB1B073A23007C7C72 /* TYDatabaseAccessTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatabaseAccessTemplate.m; sourceTree = "<group>"; };
 		1BB9CDDC1B073A23007C7C72 /* TYDatebaseFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatebaseFactory.h; sourceTree = "<group>"; };
 		1BB9CDDD1B073A23007C7C72 /* TYDatebaseFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatebaseFactory.m; sourceTree = "<group>"; };
+		424DCC2310118187D5BE3CB6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		83BB81315DAB602E29B03CE1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		FE55D204AD2C31297B00B51E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19DFFA2F3B11134D6BE63201 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +82,8 @@
 				1BB9CDB01B0739DD007C7C72 /* FMDBTool */,
 				1BB9CDCA1B0739DE007C7C72 /* FMDBToolTests */,
 				1BB9CDAF1B0739DD007C7C72 /* Products */,
+				4EC5EDE301864810225B7B81 /* Pods */,
+				3BEC4F5C5A22AFB250392563 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,8 +147,27 @@
 				1BB9CDDB1B073A23007C7C72 /* TYDatabaseAccessTemplate.m */,
 				1BB9CDDC1B073A23007C7C72 /* TYDatebaseFactory.h */,
 				1BB9CDDD1B073A23007C7C72 /* TYDatebaseFactory.m */,
+				1B6A2DD31B073FEE000EBD74 /* TYDatebaseDefines.h */,
+				1B6A2DD41B0741DE000EBD74 /* TYFMDBTool.h */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		3BEC4F5C5A22AFB250392563 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				424DCC2310118187D5BE3CB6 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4EC5EDE301864810225B7B81 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				83BB81315DAB602E29B03CE1 /* Pods.debug.xcconfig */,
+				FE55D204AD2C31297B00B51E /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +177,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1BB9CDD11B0739DE007C7C72 /* Build configuration list for PBXNativeTarget "FMDBTool" */;
 			buildPhases = (
+				400896A2784C424517266CE7 /* Check Pods Manifest.lock */,
 				1BB9CDAA1B0739DD007C7C72 /* Sources */,
 				1BB9CDAB1B0739DD007C7C72 /* Frameworks */,
 				1BB9CDAC1B0739DD007C7C72 /* Resources */,
+				449A1772F4785B8283022ABF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -236,6 +266,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		400896A2784C424517266CE7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		449A1772F4785B8283022ABF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1BB9CDAA1B0739DD007C7C72 /* Sources */ = {
@@ -367,6 +430,7 @@
 		};
 		1BB9CDD21B0739DE007C7C72 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83BB81315DAB602E29B03CE1 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FMDBTool/Info.plist;
@@ -377,6 +441,7 @@
 		};
 		1BB9CDD31B0739DE007C7C72 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE55D204AD2C31297B00B51E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FMDBTool/Info.plist;
@@ -438,6 +503,7 @@
 				1BB9CDD31B0739DE007C7C72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1BB9CDD41B0739DE007C7C72 /* Build configuration list for PBXNativeTarget "FMDBToolTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +512,7 @@
 				1BB9CDD61B0739DE007C7C72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

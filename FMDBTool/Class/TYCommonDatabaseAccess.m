@@ -7,6 +7,7 @@
 //
 
 #import "TYCommonDatabaseAccess.h"
+#import "TYDatebaseDefines.h"
 
 @implementation TYCommonDatabaseAccess
 

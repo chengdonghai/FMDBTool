@@ -7,6 +7,7 @@
 //
 
 #import "TYDatabaseAccessTemplate.h"
+#import "TYDatebaseDefines.h"
 
 @implementation TYDatabaseAccessTemplate
 

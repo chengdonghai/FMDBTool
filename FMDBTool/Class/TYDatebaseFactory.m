@@ -7,6 +7,7 @@
 //
 
 #import "TYDatebaseFactory.h"
+#import "TYDatebaseDefines.h"
 
 @implementation TYDatebaseFactory
 
