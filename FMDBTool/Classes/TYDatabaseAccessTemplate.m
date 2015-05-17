@@ -27,14 +27,12 @@
             }
             if (success) {
                 if (actionDesc) {
-                    NSString *log = [NSString stringWithFormat:@"%@ 成功", actionDesc];
-                    PLog(@"%@",log);
+                    PLog(@"%@",[NSString stringWithFormat:@"%@ 成功", actionDesc]);
                 }
                 
             } else {
                 if (actionDesc) {
-                    NSString *log = [NSString stringWithFormat:@"%@ 失败", actionDesc];
-                    PLog(@"%@",log);
+                    PLog(@"%@",[NSString stringWithFormat:@"%@ 失败", actionDesc]);
                 }
                 
             }
