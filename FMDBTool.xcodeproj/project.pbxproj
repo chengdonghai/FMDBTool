@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		19DFFA2F3B11134D6BE63201 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 424DCC2310118187D5BE3CB6 /* libPods.a */; };
-		1B6A2DDE1B074822000EBD74 /* TYCommonDatabaseAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6A2DD71B074822000EBD74 /* TYCommonDatabaseAccess.m */; };
-		1B6A2DDF1B074822000EBD74 /* TYDatabaseAccessTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6A2DD91B074822000EBD74 /* TYDatabaseAccessTemplate.m */; };
-		1B6A2DE01B074822000EBD74 /* TYDatebaseFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6A2DDC1B074822000EBD74 /* TYDatebaseFactory.m */; };
 		1BB9CDB41B0739DD007C7C72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDB31B0739DD007C7C72 /* main.m */; };
 		1BB9CDB71B0739DD007C7C72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDB61B0739DD007C7C72 /* AppDelegate.m */; };
 		1BB9CDBA1B0739DD007C7C72 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDB91B0739DD007C7C72 /* ViewController.m */; };
@@ -31,14 +28,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1B6A2DD61B074822000EBD74 /* TYCommonDatabaseAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCommonDatabaseAccess.h; sourceTree = "<group>"; };
-		1B6A2DD71B074822000EBD74 /* TYCommonDatabaseAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCommonDatabaseAccess.m; sourceTree = "<group>"; };
-		1B6A2DD81B074822000EBD74 /* TYDatabaseAccessTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatabaseAccessTemplate.h; sourceTree = "<group>"; };
-		1B6A2DD91B074822000EBD74 /* TYDatabaseAccessTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatabaseAccessTemplate.m; sourceTree = "<group>"; };
-		1B6A2DDA1B074822000EBD74 /* TYDatebaseDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatebaseDefines.h; sourceTree = "<group>"; };
-		1B6A2DDB1B074822000EBD74 /* TYDatebaseFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatebaseFactory.h; sourceTree = "<group>"; };
-		1B6A2DDC1B074822000EBD74 /* TYDatebaseFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatebaseFactory.m; sourceTree = "<group>"; };
-		1B6A2DDD1B074822000EBD74 /* TYFMDBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYFMDBTool.h; sourceTree = "<group>"; };
 		1BB9CDAE1B0739DD007C7C72 /* FMDBTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMDBTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BB9CDB21B0739DD007C7C72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BB9CDB31B0739DD007C7C72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -76,21 +65,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1B6A2DD51B074822000EBD74 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				1B6A2DD61B074822000EBD74 /* TYCommonDatabaseAccess.h */,
-				1B6A2DD71B074822000EBD74 /* TYCommonDatabaseAccess.m */,
-				1B6A2DD81B074822000EBD74 /* TYDatabaseAccessTemplate.h */,
-				1B6A2DD91B074822000EBD74 /* TYDatabaseAccessTemplate.m */,
-				1B6A2DDA1B074822000EBD74 /* TYDatebaseDefines.h */,
-				1B6A2DDB1B074822000EBD74 /* TYDatebaseFactory.h */,
-				1B6A2DDC1B074822000EBD74 /* TYDatebaseFactory.m */,
-				1B6A2DDD1B074822000EBD74 /* TYFMDBTool.h */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		1BB9CDA51B0739DD007C7C72 = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +88,7 @@
 		1BB9CDB01B0739DD007C7C72 /* FMDBTool */ = {
 			isa = PBXGroup;
 			children = (
-				1B6A2DD51B074822000EBD74 /* Classes */,
+				1BB9EB261B097DD100A81E38 /* Classes */,
 				1BB9CDB51B0739DD007C7C72 /* AppDelegate.h */,
 				1BB9CDB61B0739DD007C7C72 /* AppDelegate.m */,
 				1BB9CDB81B0739DD007C7C72 /* ViewController.h */,
@@ -151,6 +125,13 @@
 				1BB9CDCC1B0739DE007C7C72 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BB9EB261B097DD100A81E38 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		3BEC4F5C5A22AFB250392563 /* Frameworks */ = {
@@ -305,9 +286,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B6A2DE01B074822000EBD74 /* TYDatebaseFactory.m in Sources */,
-				1B6A2DDF1B074822000EBD74 /* TYDatabaseAccessTemplate.m in Sources */,
-				1B6A2DDE1B074822000EBD74 /* TYCommonDatabaseAccess.m in Sources */,
 				1BB9CDBA1B0739DD007C7C72 /* ViewController.m in Sources */,
 				1BB9CDB71B0739DD007C7C72 /* AppDelegate.m in Sources */,
 				1BB9CDB41B0739DD007C7C72 /* main.m in Sources */,
