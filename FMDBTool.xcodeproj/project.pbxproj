@@ -88,7 +88,6 @@
 		1BB9CDB01B0739DD007C7C72 /* FMDBTool */ = {
 			isa = PBXGroup;
 			children = (
-				1BB9EB261B097DD100A81E38 /* Classes */,
 				1BB9CDB51B0739DD007C7C72 /* AppDelegate.h */,
 				1BB9CDB61B0739DD007C7C72 /* AppDelegate.m */,
 				1BB9CDB81B0739DD007C7C72 /* ViewController.h */,
@@ -125,13 +124,6 @@
 				1BB9CDCC1B0739DE007C7C72 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1BB9EB261B097DD100A81E38 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Classes;
 			sourceTree = "<group>";
 		};
 		3BEC4F5C5A22AFB250392563 /* Frameworks */ = {
