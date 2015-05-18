@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/chengdonghai/FMDBTool.git", :tag => "0.0.1" }
 
-  s.source_files  = "Classes/*.{h,m}"
+  s.source_files  = "Classes","Classes/*.{h,m}"
   #s.exclude_files = "Classes/Exclude"
 
   #s.public_header_files = "/Classes/**/*.h"
