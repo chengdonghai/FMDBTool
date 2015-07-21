@@ -35,7 +35,6 @@
 		1BB47B011B098565008A7156 /* TYCommonDatabaseAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCommonDatabaseAccess.m; sourceTree = "<group>"; };
 		1BB47B021B098565008A7156 /* TYDatabaseAccessTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatabaseAccessTemplate.h; sourceTree = "<group>"; };
 		1BB47B031B098565008A7156 /* TYDatabaseAccessTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatabaseAccessTemplate.m; sourceTree = "<group>"; };
-		1BB47B041B098565008A7156 /* TYDatebaseDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatebaseDefines.h; sourceTree = "<group>"; };
 		1BB47B051B098565008A7156 /* TYDatebaseFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatebaseFactory.h; sourceTree = "<group>"; };
 		1BB47B061B098565008A7156 /* TYDatebaseFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatebaseFactory.m; sourceTree = "<group>"; };
 		1BB47B071B098565008A7156 /* TYFMDBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYFMDBTool.h; sourceTree = "<group>"; };
@@ -83,7 +82,6 @@
 				1BB47B011B098565008A7156 /* TYCommonDatabaseAccess.m */,
 				1BB47B021B098565008A7156 /* TYDatabaseAccessTemplate.h */,
 				1BB47B031B098565008A7156 /* TYDatabaseAccessTemplate.m */,
-				1BB47B041B098565008A7156 /* TYDatebaseDefines.h */,
 				1BB47B051B098565008A7156 /* TYDatebaseFactory.h */,
 				1BB47B061B098565008A7156 /* TYDatebaseFactory.m */,
 				1BB47B071B098565008A7156 /* TYFMDBTool.h */,

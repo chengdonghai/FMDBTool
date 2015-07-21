@@ -7,7 +7,6 @@
 //
 
 #import "TYCommonDatabaseAccess.h"
-#import "TYDatebaseDefines.h"
 
 @implementation TYCommonDatabaseAccess
 
@@ -52,7 +51,9 @@
         return [database executeQuery:sqlstr, tableName];
     } andItemConvertBlock:^id(FMResultSet *rs) {
         NSInteger count = [rs intForColumn:@"count"];
-        PLog(@"数据表%@ %ld", tableName, (long)count);
+        #ifdef DEBUG
+            NSLog(@"数据表%@ %ld", tableName, (long)count);
+        #endif
         return @(count);
     }];
     
@@ -74,12 +75,15 @@
 
 -(BOOL)executeUpdateWithSql:(NSString *)sql inDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc
 {
+    #ifdef DEBUG
     if (actionDesc == nil) {
-        PLog(@"执行更新操作：SQL:%@", sql);
+        
+        NSLog(@"执行更新操作：SQL:%@", sql);
+        
     } else {
-        PLog(@"执行%@：SQL:%@",actionDesc, sql);
+        NSLog(@"执行%@：SQL:%@",actionDesc, sql);
     }
-    
+    #endif
     return [self.databaseAccessTemplate openDatabase:database actionDesc:actionDesc withExecuteUpdateBlock:^BOOL{
         return [database executeUpdate:sql];
     }];
@@ -91,12 +95,13 @@
 }
 
 -(NSArray *)executeQueryWithSql:(NSString *)querySQL inDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc itemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock {
+    #ifdef DEBUG
     if(actionDesc) {
-       PLog(@"执行%@：SQL:%@",actionDesc, querySQL);
+       NSLog(@"执行%@：SQL:%@",actionDesc, querySQL);
     } else {
-        PLog(@"执行查询操作：SQL:%@", querySQL);
+       NSLog(@"执行查询操作：SQL:%@", querySQL);
     }
-    
+    #endif
     return [self.databaseAccessTemplate openDatabase:database actionDesc:actionDesc withExecuteQueryBlock:^FMResultSet *{
         return [database executeQuery:querySQL];
     } andItemConvertBlock:itemConvertBlock];

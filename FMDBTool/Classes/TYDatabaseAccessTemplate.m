@@ -7,7 +7,6 @@
 //
 
 #import "TYDatabaseAccessTemplate.h"
-#import "TYDatebaseDefines.h"
 
 @implementation TYDatabaseAccessTemplate
 
@@ -15,7 +14,9 @@
 -(BOOL)openDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc withExecuteUpdateBlock:(BOOL (^)())block
 {
     if (!database) {
-        PLog(@"数据库不存在，访问数据库失败！");
+        #ifdef DEBUG
+        NSLog(@"数据库不存在，访问数据库失败！");
+        #endif
         return NO;
     }
     BOOL success = NO;
@@ -25,20 +26,24 @@
                 success = block();
                 block = nil;
             }
+            #ifdef DEBUG
             if (success) {
                 if (actionDesc) {
-                    PLog(@"%@",[NSString stringWithFormat:@"%@ 成功", actionDesc]);
+                    NSLog(@"%@",[NSString stringWithFormat:@"%@ 成功", actionDesc]);
                 }
                 
             } else {
                 if (actionDesc) {
-                    PLog(@"%@",[NSString stringWithFormat:@"%@ 失败", actionDesc]);
+                    NSLog(@"%@",[NSString stringWithFormat:@"%@ 失败", actionDesc]);
                 }
                 
             }
+            #endif
             [database close];
         } else {
-            PLog(@"打开数据库失败!");
+            #ifdef DEBUG
+            NSLog(@"打开数据库失败!");
+            #endif
         }
     }
     
@@ -70,19 +75,22 @@
                 }
                
                 if (returnObjItem) {
+                    #ifdef DEBUG
                     if (actionDesc) {
-                        PLog(@"%@ 成功:%@",actionDesc,returnObjItem);
+                        NSLog(@"%@ 成功:%@",actionDesc,returnObjItem);
                     } else {
-                        PLog(@"获取数据成功:%@",returnObjItem);
+                        NSLog(@"获取数据成功:%@",returnObjItem);
                     }
-                    
+                    #endif
                     [returnArr addObject:returnObjItem];
                 }
             }
             itemConvertBlock = nil;
             [database close];
         } else {
-            PLog(@"打开数据库失败!");
+            #ifdef DEBUG
+            NSLog(@"打开数据库失败!");
+            #endif
         }
     }
     
@@ -98,7 +106,9 @@
 -(void)beginTransactionInDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc withExecuteBlock:(void (^)())block
 {
     if (!database) {
-        PLog(@"数据库不存在，访问数据库失败！");
+        #ifdef DEBUG
+        NSLog(@"数据库不存在，访问数据库失败！");
+        #endif
         return;
     }
     @synchronized(database) {
@@ -108,9 +118,11 @@
                 if (block) {
                     block();
                     block = nil;
+                    #ifdef DEBUG
                     if (actionDesc) {
-                        PLog(@"%@",actionDesc);
+                        NSLog(@"%@",actionDesc);
                     }
+                    #endif
                 }
                 
                 [database commit];
@@ -123,7 +135,9 @@
             }
             [database close];
         } else {
-            PLog(@"打开数据库失败!");
+            #ifdef DEBUG
+            NSLog(@"打开数据库失败!");
+            #endif
         }
     }
     

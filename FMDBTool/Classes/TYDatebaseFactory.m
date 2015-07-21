@@ -7,7 +7,6 @@
 //
 
 #import "TYDatebaseFactory.h"
-#import "TYDatebaseDefines.h"
 
 @implementation TYDatebaseFactory
 
@@ -23,7 +22,9 @@
         database = [FMDatabase databaseWithPath:fullPath];
     }
     if (database == nil) {
-        PLog(@"创建数据库失败！path:%@, databaseName:%@",path,dbName);
+        #ifdef DEBUG
+        NSLog(@"创建数据库失败！path:%@, databaseName:%@",path,dbName);
+        #endif
     }
     return database;
 }
@@ -37,7 +38,9 @@
     
     FMDatabase * database = [FMDatabase databaseWithPath:fullPath];
     if (database == nil) {
-        PLog(@"创建数据库失败！path:%@, databaseName:%@",path,dbName);
+        #ifdef DEBUG
+        NSLog(@"创建数据库失败！path:%@, databaseName:%@",path,dbName);
+        #endif
     }
     return database;
 }
