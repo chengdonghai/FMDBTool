@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.public_header_files = "FMDBTool/Classes/**/*.h"
 
   s.requires_arc = true
-
+  s.platform     = :ios, "6.0"
   s.dependency "FMDB", "~> 2.3"
 
 end
