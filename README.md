@@ -1,4 +1,4 @@
-##这是一个fmdb工具库，用来简化fmdb操作，简单介绍下每个类的功能：
+##这是一个fmdb工具库，用来简化fmdb操作：
 
  - **TYFMDBTool.h** 引用两个头文件，使用时引用它就行；
  - **TYDatebaseFactory** 工厂模式创建FMDatabase对象；
