@@ -2,7 +2,7 @@
 
  - **TYFMDBTool.h** 引用两个头文件，使用时引用它就行；
  - **TYDatebaseFactory** 工厂模式创建FMDatabase对象；
- - **TYDatabaseAccessTemplate** 模版模式简化fmdb操作，这里面有三种常见的fmdb访问模版：数据更新模版，数据查询模版，批量操作模版；
+ - **TYDatabaseAccessTemplate** 模版模式简化fmdb操作，这里面有三种常见的模版：数据更新模版，数据查询模版，批量操作模版；
  
  - **TYCommonDatabaseAccess** 访问fmdb类，里面包含一个TYDatabaseAccessTemplate属性，使用时继承它就行。
 
