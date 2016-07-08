@@ -9,7 +9,19 @@
 ##安装方法
     pod 'FMDBTool', '~> 0.0.5'
 ##下面来看看怎么使用：
-
+###一开始需要在TYCommonDatabaseAccess子类的初始化方法里创建fmdb对象，一般只需要创建一次,所以用单例模式
+```objc
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+        self.database = [TYDatebaseFactory sharedDatabaseWithPath:DocumentsDirectory withDatabaseName:BOOK_DB_NAME];
+        
+    }
+    return self;
+}
+```
 ###查询操作
 
 ```objc
