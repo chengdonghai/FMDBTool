@@ -8,8 +8,6 @@
 
 ##安装方法
     pod 'FMDBTool', '~> 0.0.5'
-##源代码在这里：[FMDBTool](https://github.com/chengdonghai/FMDBTool)
-
 ##下面来看看怎么使用：
 
 ###查询操作
