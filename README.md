@@ -9,7 +9,7 @@
  - **TYMappingObject** 建立表列名和对象属性之间的映射关系，以及进行数据转换。
  
 ##安装方法
-    pod 'FMDBTool', '~> 0.0.5'
+    pod 'FMDBTool', '~> 1.0.1'
 ##下面来看看怎么使用：
 ###一开始需要在TYCommonDatabaseAccess子类的初始化方法里创建fmdb对象，一般只需要创建一次,所以用单例模式，或者继承TYDatabaseAccess就不需要另外创建database。
 ```objc
@@ -34,7 +34,7 @@
         return @(val);
     }];
 ```
-####第三种方式自动转换查询结果为自定义对象数组
+####第三种方式自动转换查询结果为自定义对象数组,需要在block里设置映射关系，如果不设置则根据列名和对象属性名相同来进行默认映射。
 ```objc
 [self executeQueryWithSql:sql inDatabase:self.database actionDesc:@"查询数据" itemClass:[CellModel class] mappingBlock:^void(TYMappingObject *mappingObject) {
         [mappingObject setColumnName:@"t_id" mappingToPorpertyName:@"tid"];
