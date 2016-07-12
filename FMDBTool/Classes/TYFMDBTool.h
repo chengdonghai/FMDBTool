@@ -6,5 +6,5 @@
 //  Copyright (c) 2015年 天翼文化. All rights reserved.
 //
 
-#import "TYCommonDatabaseAccess.h"
+#import "TYDatabaseAccess.h"
 #import "TYDatebaseFactory.h"

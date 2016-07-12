@@ -11,6 +11,8 @@
 #import <Foundation/Foundation.h>
 #import "TYDatabaseAccessTemplate.h"
 #import "TYMappingObject.h"
+#import "NSObject+TYFMResultSet.h"
+
 typedef void(^TYMappingBlock)(TYMappingObject *mappingObject);
 
 @interface TYCommonDatabaseAccess : NSObject

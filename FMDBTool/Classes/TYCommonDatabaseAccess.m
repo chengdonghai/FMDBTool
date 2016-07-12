@@ -7,7 +7,6 @@
 //
 
 #import "TYCommonDatabaseAccess.h"
-#import "NSObject+TYFMResultSet.h"
 
 
 
