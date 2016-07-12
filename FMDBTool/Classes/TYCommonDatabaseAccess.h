@@ -10,6 +10,8 @@
 
 #import <Foundation/Foundation.h>
 #import "TYDatabaseAccessTemplate.h"
+#import "TYMappingObject.h"
+typedef void(^TYMappingBlock)(TYMappingObject *mappingObject);
 
 @interface TYCommonDatabaseAccess : NSObject
 
@@ -92,6 +94,24 @@
 -(BOOL)executeUpdateWithSql:(NSString *)sql inDatabase:(FMDatabase *)database;
 
 /**
+ *  @brief  执行数据库更新操作
+ *
+ *  @param block      更新操作的block
+ *  @param database   数据库对象
+ *  @param actionDesc 操作描述，用于打LOG
+ *  @return 执行成功或失败
+ */
+-(BOOL)executeUpdateUsingBlock:(BOOL (^)())block inDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc;
+/**
+ *  @brief  执行数据库更新操作
+ *
+ *  @param block      更新操作的block
+ *  @param database   数据库对象
+ *  @return 执行成功或失败
+ */
+-(BOOL)executeUpdateUsingBlock:(BOOL (^)())block inDatabase:(FMDatabase *)database;
+
+/**
  *  @brief  执行数据查询操作，返回用户对象数组
  *
  *  @param querySQL         sql查询语句
@@ -112,5 +132,93 @@
  *  @return 自定义对象数组
  */
 -(NSArray *)executeQueryWithSql:(NSString *)querySQL inDatabase:(FMDatabase *)database itemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock;
+/**
+ *  @brief  执行数据查询操作，返回用户对象数组
+ *
+ *  @param querySQL         sql查询语句
+ *  @param database         数据库对象
+ *  @param actionDesc       操作描述，用于打LOG
+ *  @param itemClass        转换为自定义的元素对象的类型
+ *  @param mappingBlock 用于映射block
+ *
+ *  @return 自定义对象数组
+ */
+-(NSArray *)executeQueryWithSql:(NSString *)querySQL inDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc itemClass:(Class)itemClass mappingBlock:(TYMappingBlock)mappingBlock;
+/**
+ *  @brief  执行数据查询操作，返回用户对象数组
+ *
+ *  @param querySQL         sql查询语句
+ *  @param database         数据库对象
+ *  @param itemClass        转换为自定义的元素对象的类型
+ *  @param mappingBlock 用于映射block
+ *
+ *  @return 自定义对象数组
+ */
+
+-(NSArray *)executeQueryWithSql:(NSString *)querySQL inDatabase:(FMDatabase *)database itemClass:(Class)itemClass mappingBlock:(TYMappingBlock)mappingBlock;
+
+/**
+ *  @brief 执行数据查询操作，返回用户对象数组
+ *
+ *  @param queryBlock       执行查询语句block
+ *  @param database         数据库对象
+ *  @param actionDesc       操作描述，用于打LOG
+ *  @param itemConvertBlock 用于转换FMResultSet成自定义对象的block
+ *
+ *  @return 自定义对象数组
+ */
+-(NSArray *)executeQueryWithUsingBlock:(FMResultSet *(^)())queryBlock inDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc itemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock;
+
+/**
+ *  @brief 执行数据查询操作，返回用户对象数组
+ *
+ *  @param queryBlock       执行查询语句block
+ *  @param database         数据库对象
+ *  @param itemConvertBlock 用于转换FMResultSet成自定义对象的block
+ *
+ *  @return 自定义对象数组
+ */
+-(NSArray *)executeQueryWithUsingBlock:(FMResultSet *(^)())queryBlock inDatabase:(FMDatabase *)database itemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock;
+/**
+ *  @brief  执行数据查询操作，返回用户对象数组
+ *
+ *  @param queryBlock       查询操作block
+ *  @param database         数据库对象
+ *  @param actionDesc       操作描述，用于打LOG
+ *  @param itemClass        转换为自定义的元素对象的类型
+ *  @param mappingBlock 用于映射block
+ *
+ *  @return 自定义对象数组
+ */
+-(NSArray *)executeQueryWithUsingBlock:(FMResultSet *(^)())queryBlock inDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc itemClass:(Class)itemClass mappingBlock:(TYMappingBlock)mappingBlock;
+/**
+ *  @brief  执行数据查询操作，返回用户对象数组
+ *
+ *  @param queryBlock       查询操作block
+ *  @param database         数据库对象
+ *  @param actionDesc       操作描述，用于打LOG
+ *  @param itemClass        转换为自定义的元素对象的类型
+ *  @param mappingBlock     用于映射block
+ *
+ *  @return 自定义对象数组
+ */
+-(NSArray *)executeQueryWithUsingBlock:(FMResultSet *(^)())queryBlock inDatabase:(FMDatabase *)database itemClass:(Class)itemClass mappingBlock:(TYMappingBlock)mappingBlock;
+
+/**
+ *  @brief 执行事务操作
+ *
+ *  @param database   数据库对象
+ *  @param actionDesc 操作描述，用于打LOG
+ *  @param block      操作block
+ */
+-(void)executeTransactionInDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc withExecuteBlock:(void (^)())block;
+
+/**
+ *  @brief 执行事务操作
+ *
+ *  @param database   数据库对象
+ *  @param block      操作block
+ */
+-(void)executeTransactionInDatabase:(FMDatabase *)database withExecuteBlock:(void (^)())block;
 
 @end

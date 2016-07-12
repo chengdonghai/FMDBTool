@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "FMDBTool"
-  s.version      = "0.0.5"
+  s.version      = "1.0.0"
   s.summary      = "A Tool For FMDB."
 
   s.description  = <<-DESC
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.author             = { "Donghai Cheng" => "dong723232@gmail.com" }
 
-  s.source       = { :git => "https://github.com/chengdonghai/FMDBTool.git", :tag => "0.0.5" }
+  s.source       = { :git => "https://github.com/chengdonghai/FMDBTool.git", :tag => "1.0.0" }
 
   s.source_files  = "FMDBTool/Classes","FMDBTool/Classes/**/*.{h,m}"
   #s.exclude_files = "FMDBTool/Classes/Exclude"
@@ -27,6 +27,6 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
   s.platform     = :ios, "6.0"
-  s.dependency "FMDB", "~> 2.3"
+  s.dependency "FMDB"
 
 end

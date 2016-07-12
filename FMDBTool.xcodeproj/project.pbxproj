@@ -18,6 +18,11 @@
 		1BB9CDBF1B0739DE007C7C72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9CDBE1B0739DE007C7C72 /* Images.xcassets */; };
 		1BB9CDC21B0739DE007C7C72 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9CDC01B0739DE007C7C72 /* LaunchScreen.xib */; };
 		1BB9CDCE1B0739DE007C7C72 /* FMDBToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9CDCD1B0739DE007C7C72 /* FMDBToolTests.m */; };
+		1BC2D8161D3335500050D299 /* CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2D8151D3335500050D299 /* CellModel.m */; };
+		1BC2D8191D3338A80050D299 /* DAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2D8181D3338A80050D299 /* DAO.m */; };
+		1BC2D81C1D3348450050D299 /* NSObject+TYFMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2D81B1D3348450050D299 /* NSObject+TYFMResultSet.m */; };
+		1BC2D81F1D3366680050D299 /* TYMappingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2D81E1D3366680050D299 /* TYMappingObject.m */; };
+		1BC2D8301D339C8E0050D299 /* TYDatabaseAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2D82F1D339C8E0050D299 /* TYDatabaseAccess.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,16 @@
 		1BB9CDC71B0739DE007C7C72 /* FMDBToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FMDBToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BB9CDCC1B0739DE007C7C72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BB9CDCD1B0739DE007C7C72 /* FMDBToolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDBToolTests.m; sourceTree = "<group>"; };
+		1BC2D8141D3335500050D299 /* CellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellModel.h; sourceTree = "<group>"; };
+		1BC2D8151D3335500050D299 /* CellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellModel.m; sourceTree = "<group>"; };
+		1BC2D8171D3338A80050D299 /* DAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAO.h; sourceTree = "<group>"; };
+		1BC2D8181D3338A80050D299 /* DAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAO.m; sourceTree = "<group>"; };
+		1BC2D81A1D3348450050D299 /* NSObject+TYFMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TYFMResultSet.h"; sourceTree = "<group>"; };
+		1BC2D81B1D3348450050D299 /* NSObject+TYFMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TYFMResultSet.m"; sourceTree = "<group>"; };
+		1BC2D81D1D3366680050D299 /* TYMappingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMappingObject.h; sourceTree = "<group>"; };
+		1BC2D81E1D3366680050D299 /* TYMappingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMappingObject.m; sourceTree = "<group>"; };
+		1BC2D82E1D339C8E0050D299 /* TYDatabaseAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDatabaseAccess.h; sourceTree = "<group>"; };
+		1BC2D82F1D339C8E0050D299 /* TYDatabaseAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDatabaseAccess.m; sourceTree = "<group>"; };
 		424DCC2310118187D5BE3CB6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		83BB81315DAB602E29B03CE1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FE55D204AD2C31297B00B51E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -80,8 +95,14 @@
 			children = (
 				1BB47B001B098565008A7156 /* TYCommonDatabaseAccess.h */,
 				1BB47B011B098565008A7156 /* TYCommonDatabaseAccess.m */,
+				1BC2D82E1D339C8E0050D299 /* TYDatabaseAccess.h */,
+				1BC2D82F1D339C8E0050D299 /* TYDatabaseAccess.m */,
 				1BB47B021B098565008A7156 /* TYDatabaseAccessTemplate.h */,
 				1BB47B031B098565008A7156 /* TYDatabaseAccessTemplate.m */,
+				1BC2D81A1D3348450050D299 /* NSObject+TYFMResultSet.h */,
+				1BC2D81B1D3348450050D299 /* NSObject+TYFMResultSet.m */,
+				1BC2D81D1D3366680050D299 /* TYMappingObject.h */,
+				1BC2D81E1D3366680050D299 /* TYMappingObject.m */,
 				1BB47B051B098565008A7156 /* TYDatebaseFactory.h */,
 				1BB47B061B098565008A7156 /* TYDatebaseFactory.m */,
 				1BB47B071B098565008A7156 /* TYFMDBTool.h */,
@@ -117,6 +138,10 @@
 				1BB9CDB61B0739DD007C7C72 /* AppDelegate.m */,
 				1BB9CDB81B0739DD007C7C72 /* ViewController.h */,
 				1BB9CDB91B0739DD007C7C72 /* ViewController.m */,
+				1BC2D8171D3338A80050D299 /* DAO.h */,
+				1BC2D8181D3338A80050D299 /* DAO.m */,
+				1BC2D8141D3335500050D299 /* CellModel.h */,
+				1BC2D8151D3335500050D299 /* CellModel.m */,
 				1BB9CDBB1B0739DE007C7C72 /* Main.storyboard */,
 				1BB9CDBE1B0739DE007C7C72 /* Images.xcassets */,
 				1BB9CDC01B0739DE007C7C72 /* LaunchScreen.xib */,
@@ -180,6 +205,7 @@
 				1BB9CDAB1B0739DD007C7C72 /* Frameworks */,
 				1BB9CDAC1B0739DD007C7C72 /* Resources */,
 				449A1772F4785B8283022ABF /* Copy Pods Resources */,
+				8C6D9A56CF7FF0B27CAA5334 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -296,6 +322,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8C6D9A56CF7FF0B27CAA5334 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -303,12 +344,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BC2D8301D339C8E0050D299 /* TYDatabaseAccess.m in Sources */,
 				1BB47B0A1B098565008A7156 /* TYDatebaseFactory.m in Sources */,
+				1BC2D81C1D3348450050D299 /* NSObject+TYFMResultSet.m in Sources */,
 				1BB47B091B098565008A7156 /* TYDatabaseAccessTemplate.m in Sources */,
 				1BB47B081B098565008A7156 /* TYCommonDatabaseAccess.m in Sources */,
+				1BC2D81F1D3366680050D299 /* TYMappingObject.m in Sources */,
 				1BB9CDBA1B0739DD007C7C72 /* ViewController.m in Sources */,
+				1BC2D8191D3338A80050D299 /* DAO.m in Sources */,
 				1BB9CDB71B0739DD007C7C72 /* AppDelegate.m in Sources */,
 				1BB9CDB41B0739DD007C7C72 /* main.m in Sources */,
+				1BC2D8161D3335500050D299 /* CellModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
