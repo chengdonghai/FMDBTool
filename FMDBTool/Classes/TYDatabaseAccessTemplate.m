@@ -7,6 +7,7 @@
 //
 
 #import "TYDatabaseAccessTemplate.h"
+#import <FMDB.h>
 
 @implementation TYDatabaseAccessTemplate
 
