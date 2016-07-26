@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FMDB.h"
-#import "TYMappingObject.h"
 
+#import "TYMappingObject.h"
+@class FMResultSet;
 
 @interface NSObject (TYFMResultSet)
 
