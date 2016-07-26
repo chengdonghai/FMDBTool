@@ -34,6 +34,7 @@
         
         
     }
+    free(propertys);
 }
 
 - (void)setValuesFromFMResultSet:(FMResultSet *)rs
