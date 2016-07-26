@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FMDatabase.h"
+#import <FMDB.h>
 
 @interface TYDatebaseFactory : NSObject
 
