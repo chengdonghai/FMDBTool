@@ -7,8 +7,8 @@
 //
 
 #import "TYCommonDatabaseAccess.h"
-
-
+#import "FMDatabase.h"
+#import "FMResultSet.h"
 
 @implementation TYCommonDatabaseAccess
 

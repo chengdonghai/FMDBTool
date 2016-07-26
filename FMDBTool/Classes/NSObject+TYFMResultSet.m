@@ -7,7 +7,7 @@
 //
 
 #import "NSObject+TYFMResultSet.h"
-#import <FMResultSet.h>
+#import "FMResultSet.h"
 #import <objc/runtime.h>
 @implementation NSObject (TYFMResultSet)
 
