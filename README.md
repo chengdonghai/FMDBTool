@@ -9,7 +9,7 @@
  - **TYMappingObject** 建立表列名和对象属性之间的映射关系，以及进行数据转换。
  
 ##安装方法
-    pod 'FMDBTool', '~> 1.0.2'
+    pod 'FMDBTool'
 ##下面来看看怎么使用：
 ###一开始需要在TYCommonDatabaseAccess子类的初始化方法里创建fmdb对象，一般只需要创建一次,所以用单例模式，或者继承TYDatabaseAccess就不需要另外创建database。
 ```objc
