@@ -7,7 +7,6 @@
 //
 
 #import "TYCommonDatabaseAccess.h"
-#import "FMDatabaseQueue.h"
 
 @interface TYDatabaseAccess : TYCommonDatabaseAccess
 
