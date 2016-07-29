@@ -12,141 +12,89 @@
 @implementation TYDatabaseAccessTemplate
 
 
--(BOOL)openDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc withExecuteUpdateBlock:(BOOL (^)())block
+-(BOOL)inDatabaseQueue:(FMDatabaseQueue *)databaseQueue withExecuteUpdateBlock:(BOOL (^)(FMDatabase *database))block
 {
-    if (!database) {
+    if (!databaseQueue) {
         #ifdef DEBUG
-        NSLog(@"数据库不存在，访问数据库失败！");
+        NSLog(@"数据库队列不存在，访问数据库失败！");
         #endif
         return NO;
     }
-    BOOL success = NO;
-    @synchronized(database) {
-        if ([database open]) {
-            if (block) {
-                success = block();
-                block = nil;
-            }
-            #ifdef DEBUG
-            if (success) {
-                if (actionDesc) {
-                    NSLog(@"%@",[NSString stringWithFormat:@"%@ 成功", actionDesc]);
-                }
-                
-            } else {
-                if (actionDesc) {
-                    NSLog(@"%@",[NSString stringWithFormat:@"%@ 失败", actionDesc]);
-                }
-                
-            }
-            #endif
-            [database close];
-        } else {
-            #ifdef DEBUG
-            NSLog(@"打开数据库失败!");
-            #endif
+    __block BOOL success = NO;
+
+    [databaseQueue inDatabase:^(FMDatabase *db) {
+        if (block) {
+            success = block(db);
         }
-    }
-    
+        #ifdef DEBUG
+        if (success) {
+            NSLog(@"执行更新成功");
+        } else {
+            NSLog(@"执行更新失败");
+        }
+        #endif
+    }];
     return success;
 }
 
--(BOOL)openDatabase:(FMDatabase *)database withExecuteUpdateBlock:(BOOL(^)())block
-{
-    return [self openDatabase:database actionDesc:nil withExecuteUpdateBlock:block];
-}
 
--(NSArray *)openDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc withExecuteQueryBlock:(FMResultSet *(^)())block andItemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock
+-(NSArray *)inDatabaseQueue:(FMDatabaseQueue *)databaseQueue withExecuteQueryBlock:(FMResultSet *(^)(FMDatabase *database))block andItemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock
 {
+    
+    if (!databaseQueue) {
+        #ifdef DEBUG
+        NSLog(@"数据库队列不存在，访问数据库失败！");
+        #endif
+        return nil;
+    }
     NSMutableArray *returnArr = [[NSMutableArray alloc]init];
     
-    @synchronized(database) {
-        if ([database open]) {
-            
-            FMResultSet *rs = nil;
-            if (block) {
-                rs = block();
-                block = nil;
-            }
-
-            while (rs.next) {
-                id returnObjItem = nil;
-                if (itemConvertBlock) {
-                    returnObjItem = itemConvertBlock(rs);
-                }
-               
-                if (returnObjItem) {
-                    #ifdef DEBUG
-                    if (actionDesc) {
-                        NSLog(@"%@ 成功:%@",actionDesc,returnObjItem);
-                    } else {
-                        NSLog(@"获取数据成功:%@",returnObjItem);
-                    }
-                    #endif
-                    [returnArr addObject:returnObjItem];
-                }
-            }
-            itemConvertBlock = nil;
-            [database close];
-        } else {
-            #ifdef DEBUG
-            NSLog(@"打开数据库失败!");
-            #endif
+    [databaseQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet *rs = nil;
+        if (block) {
+            rs = block(db);
         }
-    }
-    
-    
+        
+        while (rs.next) {
+            id returnObjItem = nil;
+            if (itemConvertBlock) {
+                returnObjItem = itemConvertBlock(rs);
+            }
+            
+            if (returnObjItem) {
+            #ifdef DEBUG
+                NSLog(@"获取数据成功:%@",returnObjItem);
+            #endif
+                [returnArr addObject:returnObjItem];
+            }
+        }
+        [rs close];
+    }];
     return returnArr;
 }
 
--(NSArray *)openDatabase:(FMDatabase *)database withExecuteQueryBlock:(FMResultSet *(^)())block andItemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock
+-(void)inTransactionInDatabaseQueue:(FMDatabaseQueue *)databaseQueue withExecuteBlock:(void (^)(FMDatabase *database))block
 {
-    return [self openDatabase:database actionDesc:nil withExecuteQueryBlock:block andItemConvertBlock:itemConvertBlock];
-}
-
--(void)beginTransactionInDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc withExecuteBlock:(void (^)())block
-{
-    if (!database) {
+    if (!databaseQueue) {
         #ifdef DEBUG
-        NSLog(@"数据库不存在，访问数据库失败！");
+        NSLog(@"数据库队列不存在，访问数据库失败！");
         #endif
         return;
     }
-    @synchronized(database) {
-        if ([database open]) {
-            [database beginTransaction];
-            @try {
-                if (block) {
-                    block();
-                    block = nil;
-                    #ifdef DEBUG
-                    if (actionDesc) {
-                        NSLog(@"%@",actionDesc);
-                    }
-                    #endif
-                }
-                
-                [database commit];
+    [databaseQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        @try {
+            if (block) {
+                block(db);
             }
-            @catch (NSException *exception) {
-                [database rollback];
-            }
-            @finally {
-                
-            }
-            [database close];
-        } else {
-            #ifdef DEBUG
-            NSLog(@"打开数据库失败!");
-            #endif
         }
-    }
-    
-}
+        @catch (NSException *exception) {
+            *rollback = YES;
+        }
+        @finally {
+            
+        }
 
--(void)beginTransactionInDatabase:(FMDatabase *)database withExecuteBlock:(void (^)())block
-{
-    [self beginTransactionInDatabase:database actionDesc:nil withExecuteBlock:block];
+    }];
 }
 
 

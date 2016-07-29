@@ -6,9 +6,9 @@
 //  Copyright © 2016年 天翼文化. All rights reserved.
 //
 
-#import "TYCommonDatabaseAccess.h"
+#import "TYDatabaseAccess.h"
 
-@interface DAO : TYCommonDatabaseAccess
+@interface DAO : TYDatabaseAccess
 
 
 -(void)insert:(NSString *)title count:(NSInteger)count;

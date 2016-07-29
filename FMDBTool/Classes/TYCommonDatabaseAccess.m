@@ -7,8 +7,9 @@
 //
 
 #import "TYCommonDatabaseAccess.h"
-#import "FMDatabase.h"
+#import "FMDatabaseQueue.h"
 #import "FMResultSet.h"
+#import "FMDatabase.h"
 
 @implementation TYCommonDatabaseAccess
 
@@ -21,44 +22,41 @@
     return self;
 }
 
-
--(BOOL)createTableWithSql:(NSString *)sql inDatabase:(FMDatabase *)database
+-(BOOL)createTableWithSql:(NSString *)sql inDatabaseQueue:(FMDatabaseQueue *)databaseQueue
 {
-    return [self executeUpdateWithSql:sql inDatabase:database actionDesc:@"创建数据表"];
+    return [self executeUpdateWithSql:sql inDatabaseQueue:databaseQueue];
 }
 
--(BOOL)createTableColumnWithSql:(NSString *)sql inDatabase:(FMDatabase *)database
+-(BOOL)createTableColumnWithSql:(NSString *)sql inDatabaseQueue:(FMDatabaseQueue *)databaseQueue
 {
-    return [self executeUpdateWithSql:sql inDatabase:database actionDesc:@"创建表列"];
+    return [self executeUpdateWithSql:sql inDatabaseQueue:databaseQueue];
 }
 
-- (BOOL)deleteTableWithTableName:(NSString *)tableName inDatabase:(FMDatabase *)database
+- (BOOL)deleteTableWithTableName:(NSString *)tableName inDatabaseQueue:(FMDatabaseQueue *)databaseQueue
 {
     NSString *sqlstr = [NSString stringWithFormat:@"DROP TABLE %@", tableName];
     
-    return [self executeUpdateWithSql:sqlstr inDatabase:database actionDesc:@"删除表"];
+    return [self executeUpdateWithSql:sqlstr inDatabaseQueue:databaseQueue];
 }
 
-- (BOOL)deleteTableColumnWithTableName:(NSString *)tableName columnName:(NSString *)columnName inDatabase:(FMDatabase *)database
+- (BOOL)deleteTableColumnWithTableName:(NSString *)tableName columnName:(NSString *)columnName inDatabaseQueue:(FMDatabaseQueue *)databaseQueue
 {
     NSString *sqlstr = [NSString stringWithFormat:@"ALTER TABLE %@ DROP COLUMN %@", tableName, columnName];
-    return [self executeUpdateWithSql:sqlstr inDatabase:database actionDesc:@"删除列"];
+    return [self executeUpdateWithSql:sqlstr inDatabaseQueue:databaseQueue];
 }
 
-- (BOOL)isTableExistWithTableName:(NSString *)tableName inDatabase:(FMDatabase *)database
+- (BOOL)isTableExistWithTableName:(NSString *)tableName inDatabaseQueue:(FMDatabaseQueue *)databaseQueue
 {
     NSString *sqlstr = @"select count(*) as 'count' from sqlite_master where type ='table' and name = ?";
-    
-    NSArray *array = [self.databaseAccessTemplate openDatabase:database withExecuteQueryBlock:^FMResultSet *{
-        return [database executeQuery:sqlstr, tableName];
-    } andItemConvertBlock:^id(FMResultSet *rs) {
-        NSInteger count = [rs intForColumn:@"count"];
-        #ifdef DEBUG
-            NSLog(@"数据表%@ %ld", tableName, (long)count);
-        #endif
-        return @(count);
+    NSArray *array = [self executeQueryWithUsingBlock:^FMResultSet *(FMDatabase *database) {
+       return [database executeQuery:sqlstr, tableName];
+    } inDatabaseQueue:databaseQueue itemConvertBlock:^id(FMResultSet *rs) {
+       NSInteger count = [rs intForColumn:@"count"];
+    #ifdef DEBUG
+       NSLog(@"数据表%@ %ld", tableName, (long)count);
+    #endif
+       return @(count);
     }];
-    
     BOOL isExist = NO;
     if (array && array.count > 0)
     {
@@ -75,102 +73,59 @@
     return isExist;
 }
 
--(BOOL)executeUpdateWithSql:(NSString *)sql inDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc
+-(BOOL)executeUpdateWithSql:(NSString *)sql inDatabaseQueue:(FMDatabaseQueue *)databaseQueue
 {
     #ifdef DEBUG
-    if (actionDesc == nil) {
-        
-        NSLog(@"执行更新操作：SQL:%@", sql);
-        
-    } else {
-        NSLog(@"执行%@：SQL:%@",actionDesc, sql);
-    }
+        NSLog(@"执行：SQL:%@", sql);
     #endif
-    return [self executeUpdateUsingBlock:^BOOL{
-            return [database executeUpdate:sql];
-        } inDatabase:database actionDesc:actionDesc];
+    return [self executeUpdateUsingBlock:^BOOL(FMDatabase *db){
+            return [db executeUpdate:sql];
+        } inDatabaseQueue:databaseQueue];
     
 }
-
--(BOOL)executeUpdateWithSql:(NSString *)sql inDatabase:(FMDatabase *)database
+-(BOOL)executeUpdateUsingBlock:(BOOL (^)(FMDatabase *database))block inDatabaseQueue:(FMDatabaseQueue *)databaseQueue
 {
-    return [self executeUpdateWithSql:sql inDatabase:database actionDesc:nil];
+    return [self.databaseAccessTemplate inDatabaseQueue:databaseQueue withExecuteUpdateBlock:block];
 }
 
--(BOOL)executeUpdateUsingBlock:(BOOL (^)())block inDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc
-{
-    return [self.databaseAccessTemplate openDatabase:database actionDesc:actionDesc withExecuteUpdateBlock:block];
-}
-
--(BOOL)executeUpdateUsingBlock:(BOOL (^)())block inDatabase:(FMDatabase *)database
-{
-    return [self executeUpdateUsingBlock:block inDatabase:database actionDesc:nil];
-}
-
--(NSArray *)executeQueryWithSql:(NSString *)querySQL inDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc itemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock {
+-(NSArray *)executeQueryWithSql:(NSString *)querySQL inDatabaseQueue:(FMDatabaseQueue *)databaseQueue itemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock {
     #ifdef DEBUG
-    if(actionDesc) {
-       NSLog(@"执行%@：SQL:%@",actionDesc, querySQL);
-    } else {
-       NSLog(@"执行查询操作：SQL:%@", querySQL);
-    }
+    NSLog(@"执行查询操作：SQL:%@", querySQL);
     #endif
-    return [self executeQueryWithUsingBlock:^FMResultSet *{
-        return [database executeQuery:querySQL];
-    } inDatabase:database actionDesc:actionDesc itemConvertBlock:itemConvertBlock];
-}
-
--(NSArray *)executeQueryWithSql:(NSString *)querySQL inDatabase:(FMDatabase *)database itemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock {
-    return [self executeQueryWithSql:querySQL inDatabase:database actionDesc:nil itemConvertBlock:itemConvertBlock];
-}
-
--(NSArray *)executeQueryWithUsingBlock:(FMResultSet *(^)())queryBlock inDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc itemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock {
     
-    return [self.databaseAccessTemplate openDatabase:database actionDesc:actionDesc withExecuteQueryBlock:queryBlock andItemConvertBlock:itemConvertBlock];
-}
-
--(NSArray *)executeQueryWithUsingBlock:(FMResultSet *(^)())queryBlock inDatabase:(FMDatabase *)database itemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock {
-    return [self executeQueryWithUsingBlock:queryBlock inDatabase:database actionDesc:nil itemConvertBlock:itemConvertBlock];
-}
-
--(NSArray *)executeQueryWithSql:(NSString *)querySQL inDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc itemClass:(Class)itemClass mappingBlock:(TYMappingBlock)mappingBlock {
-#ifdef DEBUG
-    if(actionDesc) {
-        NSLog(@"执行%@：SQL:%@",actionDesc, querySQL);
-    } else {
-        NSLog(@"执行查询操作：SQL:%@", querySQL);
-    }
-#endif
-    return [self executeQueryWithUsingBlock:^FMResultSet *{
+    return [self executeQueryWithUsingBlock:^FMResultSet *(FMDatabase *database){
         return [database executeQuery:querySQL];
-    } inDatabase:database actionDesc:actionDesc itemConvertBlock:^id(FMResultSet *rs) {
+    } inDatabaseQueue:databaseQueue itemConvertBlock:itemConvertBlock];
+}
+
+-(NSArray *)executeQueryWithUsingBlock:(FMResultSet *(^)(FMDatabase *database))queryBlock inDatabaseQueue:(FMDatabaseQueue *)databaseQueue itemConvertBlock:(id(^)(FMResultSet *rs))itemConvertBlock {
+    
+    return [self.databaseAccessTemplate inDatabaseQueue:databaseQueue withExecuteQueryBlock:queryBlock andItemConvertBlock:itemConvertBlock];
+}
+
+-(NSArray *)executeQueryWithSql:(NSString *)querySQL inDatabaseQueue:(FMDatabaseQueue *)databaseQueue itemClass:(Class)itemClass mappingBlock:(TYMappingBlock)mappingBlock {
+    #ifdef DEBUG
+   
+     NSLog(@"执行查询操作：SQL:%@", querySQL);
+    
+    #endif
+    return [self executeQueryWithUsingBlock:^FMResultSet *(FMDatabase *db){
+         return [db executeQuery:querySQL];
+    } inDatabaseQueue:databaseQueue itemConvertBlock:^id(FMResultSet *rs) {
         return [self convertResultSet:rs itemClass:itemClass mappingBlock:mappingBlock];
     }];
 }
 
--(NSArray *)executeQueryWithSql:(NSString *)querySQL inDatabase:(FMDatabase *)database itemClass:(Class)itemClass mappingBlock:(TYMappingBlock)mappingBlock {
-    return [self executeQueryWithSql:querySQL inDatabase:database actionDesc:nil itemClass:itemClass mappingBlock:mappingBlock];
-}
-
--(NSArray *)executeQueryWithUsingBlock:(FMResultSet *(^)())queryBlock inDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc itemClass:(Class)itemClass mappingBlock:(TYMappingBlock)mappingBlock {
+-(NSArray *)executeQueryWithUsingBlock:(FMResultSet *(^)(FMDatabase *database))queryBlock inDatabaseQueue:(FMDatabaseQueue *)databaseQueue itemClass:(Class)itemClass mappingBlock:(TYMappingBlock)mappingBlock {
     
-    return [self.databaseAccessTemplate openDatabase:database actionDesc:actionDesc withExecuteQueryBlock:queryBlock andItemConvertBlock:^id(FMResultSet *rs) {
+    return [self.databaseAccessTemplate inDatabaseQueue:databaseQueue withExecuteQueryBlock:queryBlock andItemConvertBlock:^id(FMResultSet *rs) {
         return [self convertResultSet:rs itemClass:itemClass mappingBlock:mappingBlock];
     }];
 }
 
--(NSArray *)executeQueryWithUsingBlock:(FMResultSet *(^)())queryBlock inDatabase:(FMDatabase *)database itemClass:(Class)itemClass mappingBlock:(TYMappingBlock)mappingBlock {
-    return [self executeQueryWithUsingBlock:queryBlock inDatabase:database actionDesc:nil itemClass:itemClass mappingBlock:mappingBlock];
-}
-
--(void)executeTransactionInDatabase:(FMDatabase *)database actionDesc:(NSString *)actionDesc withExecuteBlock:(void (^)())block
+-(void)executeTransactionInDatabaseQueue:(FMDatabaseQueue *)databaseQueue withExecuteBlock:(void (^)(FMDatabase *database))block
 {
-    [self.databaseAccessTemplate beginTransactionInDatabase:database actionDesc:actionDesc withExecuteBlock:block];
-}
-
--(void)executeTransactionInDatabase:(FMDatabase *)database withExecuteBlock:(void (^)())block
-{
-    [self executeTransactionInDatabase:database actionDesc:nil withExecuteBlock:block];
+    [self.databaseAccessTemplate inTransactionInDatabaseQueue:databaseQueue withExecuteBlock:block];
 }
 
 -(id) convertResultSet:(FMResultSet *)rs itemClass:(Class)itemClass mappingBlock:(TYMappingBlock)mappingBlock{

@@ -7,11 +7,12 @@
 //
 
 #import "TYCommonDatabaseAccess.h"
+#import "FMDatabaseQueue.h"
 
 @interface TYDatabaseAccess : TYCommonDatabaseAccess
 
 
-@property(nonatomic,strong) FMDatabase *database;
+@property(nonatomic,strong) FMDatabaseQueue *databaseQueue;
 
 - (instancetype)initWithDatabasePath:(NSString *)dbPath andDatabaseName:(NSString *)dbName;
 

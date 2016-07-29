@@ -7,7 +7,7 @@
 //
 
 #import "TYDatabaseAccess.h"
-#import "TYDatebaseFactory.h"
+#import "TYDatebaseQueueFactory.h"
 
 @implementation TYDatabaseAccess
 
@@ -15,8 +15,9 @@
 {
     self = [super init];
     if (self) {
-        self.database = [TYDatebaseFactory sharedDatabaseWithPath:dbPath withDatabaseName:dbName];
+        self.databaseQueue = [TYDatebaseQueueFactory sharedDatabaseQueueWithPath:dbPath withDatabaseName:dbName];
     }
     return self;
 }
+
 @end
